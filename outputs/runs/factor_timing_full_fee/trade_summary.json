@@ -1,0 +1,25 @@
+{
+  "total_orders": 3461,
+  "filled": 3457,
+  "rejected": 4,
+  "fill_rate": 0.998844264663392,
+  "by_status": {
+    "filled": 3457,
+    "rejected": 4
+  },
+  "rejected_reasons": {
+    "no_data": 4,
+    "suspended": 0,
+    "limit": 0,
+    "t_plus_one": 0,
+    "bad_price": 0,
+    "no_cash": 0,
+    "no_position": 0
+  },
+  "filled_reasons": {
+    "rebalance": 2171,
+    "exit:atr_trailing": 733,
+    "exit:ma_stop,atr_trailing": 327,
+    "exit:ma_stop": 226
+  }
+}

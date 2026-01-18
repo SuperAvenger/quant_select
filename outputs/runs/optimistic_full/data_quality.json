@@ -1,0 +1,10 @@
+{
+  "empty": false,
+  "missing_trade_dates": [],
+  "missing_trade_dates_count": 0,
+  "duplicate_rows": 0,
+  "bad_price_rows": 0,
+  "invalid_ohlc_rows": 0,
+  "missing_limit_rows": 1703844,
+  "missing_suspend_rows": 0
+}

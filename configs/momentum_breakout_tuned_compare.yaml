@@ -1,0 +1,123 @@
+tushare:
+  token_env: TUSHARE_TOKEN
+  timeout: 30
+
+backtest:
+  start: "20200101"
+  end: "20221231"
+  calendar_exchange: "SSE"
+  resume: false
+
+data:
+  adj: "qfq"
+  cache_dir: "./.cache"
+  store_format: "parquet"
+  pull_mode: "by_trade_date"
+  incremental: true
+  refetch_empty: true
+  pull_workers: 32
+  pull_prefetch: 96
+  pull_retries: 3
+  pull_retry_sleep: 2.0
+  pull_rate_per_min: 500
+  pull_fallback_single: true
+  quality_check:
+    enabled: true
+
+benchmark:
+  ts_code: "000300.SH"
+
+universe:
+  exclude_st: true
+  min_list_days: 120
+  exclude_suspended: true
+  min_avg_amount_20: 30000000
+  max_names: 800
+
+strategy:
+  name: "momentum_breakout"
+  rebalance: "M"
+  top_n: 30
+
+  regime_filter:
+    enabled: true
+    index_ts_code: "000300.SH"
+    ma_days: 200
+
+  ranking:
+    use_52w_high: true
+    use_mom_12_1: true
+    w_52w_high: 0.6
+    w_mom_12_1: 0.4
+
+  entry:
+    breakout_lookback: 60
+    volume_ratio_min: 1.2
+    trend_ma_days: 60
+
+  exit:
+    use_ma_stop: true
+    ma_stop_days: 60
+    use_atr_trailing: true
+    atr_days: 20
+    atr_k: 3.0
+
+execution:
+  fill_price: "next_open"
+  limit_rule:
+    enabled: true
+    mode: "conservative"
+  t_plus_one: true
+  slippage_bps: 10
+  commission_bps: 1.454
+  commission_bps_by_prefix:
+    "510": 16.0
+    "511": 16.0
+    "512": 16.0
+    "513": 16.0
+    "515": 16.0
+    "516": 16.0
+    "517": 16.0
+    "518": 16.0
+    "560": 16.0
+    "563": 16.0
+    "588": 16.0
+    "589": 16.0
+    "159": 16.0
+    "160": 16.0
+    "161": 16.0
+    "162": 16.0
+    "163": 16.0
+    "164": 16.0
+    "165": 16.0
+    "168": 16.0
+    "169": 16.0
+  min_commission: 5.0
+  stamp_tax_bps: 10
+  stamp_tax_bps_by_prefix:
+    "510": 0.0
+    "511": 0.0
+    "512": 0.0
+    "513": 0.0
+    "515": 0.0
+    "516": 0.0
+    "517": 0.0
+    "518": 0.0
+    "560": 0.0
+    "563": 0.0
+    "588": 0.0
+    "589": 0.0
+    "159": 0.0
+    "160": 0.0
+    "161": 0.0
+    "162": 0.0
+    "163": 0.0
+    "164": 0.0
+    "165": 0.0
+    "168": 0.0
+    "169": 0.0
+  max_turnover: 0.30
+
+risk:
+  weight_scheme: "equal"
+  max_weight_per_name: 0.05

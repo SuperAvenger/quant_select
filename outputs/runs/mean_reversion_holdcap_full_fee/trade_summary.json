@@ -1,0 +1,31 @@
+{
+  "total_orders": 19029,
+  "filled": 18861,
+  "rejected": 168,
+  "fill_rate": 0.9911713700141889,
+  "by_status": {
+    "filled": 18861,
+    "rejected": 168
+  },
+  "rejected_reasons": {
+    "no_cash": 93,
+    "no_data": 75,
+    "suspended": 0,
+    "limit": 0,
+    "t_plus_one": 0,
+    "bad_price": 0,
+    "no_position": 0
+  },
+  "filled_reasons": {
+    "rebalance": 17221,
+    "exit:stop_loss": 818,
+    "exit:take_profit": 276,
+    "exit:max_hold": 213,
+    "exit:mean_revert": 168,
+    "exit:mean_revert,take_profit": 123,
+    "exit:mean_revert,max_hold": 22,
+    "exit:stop_loss,max_hold": 15,
+    "exit:mean_revert,take_profit,max_hold": 4,
+    "exit:take_profit,max_hold": 1
+  }
+}

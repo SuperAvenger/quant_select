@@ -1,0 +1,16 @@
+{
+  "total_orders": 424,
+  "filled": 424,
+  "rejected": 0,
+  "fill_rate": 1.0,
+  "by_status": {
+    "filled": 424
+  },
+  "rejected_reasons": {},
+  "filled_reasons": {
+    "rebalance": 233,
+    "exit:atr_trailing": 166,
+    "exit:ma_stop,atr_trailing": 18,
+    "exit:ma_stop": 7
+  }
+}

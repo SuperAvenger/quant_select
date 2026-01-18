@@ -1,0 +1,6 @@
+ts_code,side,qty,price,exec_date,fee,status,reason
+600319.SH,BUY,0,0.0,20170302,0.0,rejected,no_data
+002069.SZ,SELL,0,0.0,20170331,0.0,rejected,no_data
+000968.SZ,SELL,0,0.0,20170512,0.0,rejected,no_data
+600117.SH,BUY,0,0.0,20170802,0.0,rejected,no_data
+600470.SH,SELL,0,0.0,20210402,0.0,rejected,no_data

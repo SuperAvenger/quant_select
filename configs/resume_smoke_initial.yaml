@@ -1,0 +1,79 @@
+tushare:
+  token_env: TUSHARE_TOKEN
+  timeout: 30
+
+backtest:
+  start: "20240102"
+  end: "20240105"
+  calendar_exchange: "SSE"
+  resume: false
+
+data:
+  adj: "qfq"
+  cache_dir: "./.cache"
+  store_format: "parquet"
+  pull_mode: "by_trade_date"
+  incremental: true
+  refetch_empty: true
+  pull_workers: 8
+  pull_prefetch: 16
+  pull_retries: 2
+  pull_retry_sleep: 1.0
+  pull_rate_per_min: 500
+  pull_fallback_single: true
+  quality_check:
+    enabled: true
+
+benchmark:
+  ts_code: "000300.SH"
+
+universe:
+  exclude_st: true
+  min_list_days: 120
+  exclude_suspended: true
+  min_avg_amount_20: 30000000
+  max_names: 100
+  max_names: 300
+
+strategy:
+  name: "momentum_breakout"
+  rebalance: "M"
+  top_n: 30
+
+  regime_filter:
+    enabled: true
+    index_ts_code: "000300.SH"
+    ma_days: 200
+
+  ranking:
+    use_52w_high: true
+    use_mom_12_1: true
+    w_52w_high: 0.6
+    w_mom_12_1: 0.4
+
+  entry:
+    breakout_lookback: 120
+    volume_ratio_min: 1.5
+    trend_ma_days: 120
+
+  exit:
+    use_ma_stop: true
+    ma_stop_days: 60
+    use_atr_trailing: true
+    atr_days: 20
+    atr_k: 3.0
+
+execution:
+  fill_price: "next_open"
+  limit_rule:
+    enabled: true
+    mode: "conservative"
+  t_plus_one: true
+  slippage_bps: 10
+  commission_bps: 3
+  stamp_tax_bps: 50
+  max_turnover: 0.30
+
+risk:
+  weight_scheme: "equal"
+  max_weight_per_name: 0.05

@@ -1,0 +1,13 @@
+{
+  "total_return": -0.36748089556551866,
+  "annualized_return": -0.04710976615971285,
+  "annualized_vol": 0.09503082649654009,
+  "sharpe": -0.4598993903210681,
+  "sortino": -0.4907602770531544,
+  "max_drawdown": -0.40991761349598177,
+  "trade_count": 3123,
+  "win_rate": 0.421680216802168,
+  "avg_holding_days": 38.448238482384824,
+  "closed_trades": 1845,
+  "turnover": 24.856427428533962
+}

@@ -1,0 +1,48 @@
+{
+  "samples": {
+    "suspend_buy": {
+      "trade_date": "20200103",
+      "ts_code": "002115.SZ"
+    },
+    "limit_buy": {
+      "trade_date": "20221230",
+      "ts_code": "000002.SZ"
+    }
+  },
+  "summary": {
+    "total": 2,
+    "by_status": {
+      "rejected": 1,
+      "filled": 1
+    },
+    "by_reason": {
+      "suspended": 1,
+      "validation:limit_buy": 1
+    }
+  },
+  "limit_scan": {
+    "counts": {
+      "total_rows": 1088729,
+      "suspend_rows": 119,
+      "limit_up_open": 316,
+      "limit_down_open": 0,
+      "one_word_up": 0,
+      "one_word_down": 0,
+      "conservative_buy_reject": 316,
+      "conservative_sell_reject": 0,
+      "optimistic_buy_reject": 0,
+      "optimistic_sell_reject": 0
+    },
+    "rates": {
+      "suspend_rows": 0.00010930176379980693,
+      "limit_up_open": 0.0002902467005104117,
+      "limit_down_open": 0.0,
+      "one_word_up": 0.0,
+      "one_word_down": 0.0,
+      "conservative_buy_reject": 0.0002902467005104117,
+      "conservative_sell_reject": 0.0,
+      "optimistic_buy_reject": 0.0,
+      "optimistic_sell_reject": 0.0
+    }
+  }
+}

@@ -1,0 +1,12 @@
+ts_code,side,qty,price,exec_date,fee,status,reason
+600620.SH,BUY,0,0.0,20161011,0.0,rejected,no_data
+300221.SZ,SELL,0,0.0,20161018,0.0,rejected,no_data
+600179.SH,SELL,0,0.0,20161102,0.0,rejected,no_data
+600346.SH,BUY,0,0.0,20161102,0.0,rejected,no_data
+601116.SH,BUY,0,0.0,20161202,0.0,rejected,no_data
+600319.SH,BUY,0,0.0,20170302,0.0,rejected,no_data
+600117.SH,BUY,0,0.0,20170802,0.0,rejected,no_data
+603518.SH,BUY,0,0.0,20210507,0.0,rejected,no_data
+000957.SZ,BUY,0,0.0,20220602,0.0,rejected,no_data
+600319.SH,SELL,0,0.0,20251104,0.0,rejected,no_data
+600222.SH,BUY,0,0.0,20251202,0.0,rejected,no_data

@@ -1,0 +1,17 @@
+{
+  "breakout_lookback": 60.0,
+  "trend_ma_days": 60.0,
+  "volume_ratio_min": 1.2,
+  "total_return": -0.04060598985940789,
+  "annualized_return": -0.014266261567436822,
+  "annualized_vol": 0.06479253590933096,
+  "sharpe": -0.1890663638359886,
+  "sortino": -0.17759748967872682,
+  "max_drawdown": -0.14731134761827958,
+  "trade_count": 339.0,
+  "win_rate": 0.47342995169082125,
+  "avg_holding_days": 37.2512077294686,
+  "closed_trades": 207.0,
+  "turnover": 3.711678053549736,
+  "score": -0.2769882992125652
+}
