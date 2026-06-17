@@ -14,3 +14,7 @@ Outputs:
 - `equity_curve.csv`
 - `trades.csv`
 - `metrics.json`
+
+## Repository hygiene
+
+Generated backtest outputs, local CSV data, caches, and virtual environments are excluded from source control. Keep reproducible sample data under `tests/fixtures/` when tests need committed data.
