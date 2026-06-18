@@ -18,6 +18,8 @@ jobs:
           python-version: "3.11"
           cache: "pip"
       - name: Install package
-        run: pip install -e .
+        run: pip install -e '.[dev]'
       - name: Compile Python sources
         run: python -m compileall src scripts
+      - name: Run tests
+        run: pytest -q

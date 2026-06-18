@@ -16,5 +16,16 @@ dependencies = [
   "matplotlib>=3.7",
 ]
 
+[project.optional-dependencies]
+dev = [
+  "pytest>=8.0,<9",
+]
+
+[project.scripts]
+quant-a = "quant_a.cli.run:main"
+
 [tool.setuptools.packages.find]
 where = ["src"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]

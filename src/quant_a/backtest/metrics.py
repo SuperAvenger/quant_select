@@ -61,6 +61,8 @@ def compute_metrics(equity_df: pd.DataFrame, trades_df: pd.DataFrame) -> Dict:
     if equity_df.empty:
         return {}
     equity = equity_df["equity"].astype(float)
+    if not np.isfinite(equity).all() or (equity <= 0).any():
+        raise ValueError("equity values must be finite and greater than zero")
     returns = equity.pct_change().fillna(0.0)
     total_return = equity.iloc[-1] / equity.iloc[0] - 1.0
     if len(equity) > 1:

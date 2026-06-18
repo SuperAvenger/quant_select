@@ -18,3 +18,7 @@ Outputs:
 ## Repository hygiene
 
 Generated backtest outputs, local CSV data, caches, and virtual environments are excluded from source control. Keep reproducible sample data under `tests/fixtures/` when tests need committed data.
+
+## Roadmap
+
+See [`docs/ROADMAP.md`](docs/ROADMAP.md) for reproducibility, validation, and read-only MCP expansion priorities.
