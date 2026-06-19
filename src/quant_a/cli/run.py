@@ -3,6 +3,7 @@ from __future__ import annotations
 import argparse
 import json
 import os
+from pathlib import Path
 
 import pandas as pd
 
@@ -24,6 +25,8 @@ from quant_a.data.quality import check_panel_quality
 from quant_a.data.store import LocalStore
 from quant_a.data.tushare_client import TuShareClient
 from quant_a.features.precompute import precompute_features, precompute_index_features
+from quant_a.research.metadata import build_run_metadata
+from quant_a.research.snapshot import build_research_snapshot
 
 
 def _estimate_resume_lookback_days(cfg: dict) -> int:
@@ -179,6 +182,7 @@ def main() -> None:
     monthly_win_rate_path = os.path.join(args.out, "monthly_win_rate.csv")
     industry_win_rate_path = os.path.join(args.out, "industry_win_rate.csv")
     meta_path = os.path.join(args.out, "run_meta.json")
+    research_snapshot_path = os.path.join(args.out, "research_snapshot.json")
 
     equity_df.to_csv(equity_path, index=False)
     trades_df.to_csv(trades_path, index=False)
@@ -208,32 +212,14 @@ def main() -> None:
     if not industry_win_rate.empty:
         industry_win_rate.to_csv(industry_win_rate_path, index=False)
 
-    meta = {
-        "config_path": args.config,
-        "backtest_start": cfg["backtest"]["start"],
-        "backtest_end": cfg["backtest"]["end"],
-        "calendar_exchange": cfg["backtest"]["calendar_exchange"],
-        "data_adj": cfg.get("data", {}).get("adj"),
-        "data_pull_mode": cfg.get("data", {}).get("pull_mode", "by_ts_code"),
-        "execution": {
-            "limit_rule": cfg.get("execution", {}).get("limit_rule", {}),
-            "slippage_bps": cfg.get("execution", {}).get("slippage_bps"),
-            "commission_bps": cfg.get("execution", {}).get("commission_bps"),
-            "commission_bps_by_prefix": cfg.get("execution", {}).get(
-                "commission_bps_by_prefix", {}
-            ),
-            "stamp_tax_bps": cfg.get("execution", {}).get("stamp_tax_bps"),
-            "stamp_tax_bps_by_prefix": cfg.get("execution", {}).get(
-                "stamp_tax_bps_by_prefix", {}
-            ),
-            "min_commission": cfg.get("execution", {}).get("min_commission"),
-        },
-        "universe": {
-            "max_names": cfg.get("universe", {}).get("max_names"),
-        },
-    }
+    repo_root = Path(__file__).resolve().parents[3]
+    meta = build_run_metadata(cfg, args.config, repo_root=repo_root)
     with open(meta_path, "w", encoding="utf-8") as f:
         json.dump(meta, f, ensure_ascii=True, indent=2)
+
+    research_snapshot = build_research_snapshot(state, metrics, quality_report)
+    with open(research_snapshot_path, "w", encoding="utf-8") as f:
+        json.dump(research_snapshot, f, ensure_ascii=True, indent=2)
 
     plot_equity_drawdown(equity_df, args.out)
 
