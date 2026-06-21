@@ -27,6 +27,7 @@ from quant_a.data.tushare_client import TuShareClient
 from quant_a.features.precompute import precompute_features, precompute_index_features
 from quant_a.research.metadata import build_run_metadata
 from quant_a.research.snapshot import build_research_snapshot
+from quant_a.research.rolling_validation import build_rolling_validation
 
 
 def _estimate_resume_lookback_days(cfg: dict) -> int:
@@ -183,6 +184,7 @@ def main() -> None:
     industry_win_rate_path = os.path.join(args.out, "industry_win_rate.csv")
     meta_path = os.path.join(args.out, "run_meta.json")
     research_snapshot_path = os.path.join(args.out, "research_snapshot.json")
+    rolling_validation_path = os.path.join(args.out, "rolling_validation.json")
 
     equity_df.to_csv(equity_path, index=False)
     trades_df.to_csv(trades_path, index=False)
@@ -220,6 +222,15 @@ def main() -> None:
     research_snapshot = build_research_snapshot(state, metrics, quality_report)
     with open(research_snapshot_path, "w", encoding="utf-8") as f:
         json.dump(research_snapshot, f, ensure_ascii=True, indent=2)
+
+    rolling_cfg = cfg.get("research", {}).get("rolling_validation", {})
+    rolling_validation = build_rolling_validation(
+        equity_df,
+        window_days=int(rolling_cfg.get("window_days", 60)),
+        step_days=int(rolling_cfg.get("step_days", 20)),
+    )
+    with open(rolling_validation_path, "w", encoding="utf-8") as f:
+        json.dump(rolling_validation, f, ensure_ascii=True, indent=2)
 
     plot_equity_drawdown(equity_df, args.out)
 

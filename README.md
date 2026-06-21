@@ -16,6 +16,7 @@ Outputs:
 - `metrics.json`
 - `run_meta.json` (配置哈希、代码版本、数据区间和费用模型)
 - `research_snapshot.json` (只读持仓、浮盈亏、风险与数据警告)
+- `rolling_validation.json` (滚动窗口收益、回撤、波动率和稳定性汇总)
 
 The framework supports research and read-only trading assistance. It never submits broker orders automatically.
 
