@@ -1,0 +1,16 @@
+__pycache__/
+*.py[cod]
+*.egg-info/
+.pytest_cache/
+.mypy_cache/
+.ruff_cache/
+.cache/
+.venv/
+venv/
+.env
+*.log
+
+# Generated research outputs and local data
+outputs/
+*.csv
+!tests/fixtures/*.csv
